@@ -1,0 +1,74 @@
+wagner@wg MINGW64 /c/tamp2/seçao_21_jdbc7_dao_git
+$ init git
+bash: init: command not found
+
+wagner@wg MINGW64 /c/tamp2/seçao_21_jdbc7_dao_git
+$ git init
+Initialized empty Git repository in C:/tamp2/seçao_21_jdbc7_dao_git/.git/
+
+wagner@wg MINGW64 /c/tamp2/seçao_21_jdbc7_dao_git (master)
+$ git remote add origin git@github.com:wagnerfeitosa/secao21_jdbc7_dao.git
+
+wagner@wg MINGW64 /c/tamp2/seçao_21_jdbc7_dao_git (master)
+$ git pull origin master
+fatal: couldn't find remote ref master
+
+wagner@wg MINGW64 /c/tamp2/seçao_21_jdbc7_dao_git (master)
+$ git branch -M main
+
+wagner@wg MINGW64 /c/tamp2/seçao_21_jdbc7_dao_git (main)
+$ git pull origin main
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), 1.04 KiB | 7.00 KiB/s, done.
+From github.com:wagnerfeitosa/secao21_jdbc7_dao
+ * branch            main       -> FETCH_HEAD
+ * [new branch]      main       -> origin/main
+
+wagner@wg MINGW64 /c/tamp2/seçao_21_jdbc7_dao_git (main)
+$ git status
+On branch main
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .classpath
+        .project
+        .settings/
+        db.properties
+        src/
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+wagner@wg MINGW64 /c/tamp2/seçao_21_jdbc7_dao_git (main)
+$ git add .
+
+wagner@wg MINGW64 /c/tamp2/seçao_21_jdbc7_dao_git (main)
+$ git commit -m "Creating project and git repository"
+[main c6b1588] Creating project and git repository
+ 9 files changed, 164 insertions(+)
+ create mode 100644 .classpath
+ create mode 100644 .project
+ create mode 100644 .settings/org.eclipse.core.resources.prefs
+ create mode 100644 .settings/org.eclipse.jdt.core.prefs
+ create mode 100644 db.properties
+ create mode 100644 src/db/DB.java
+ create mode 100644 src/db/DbException.java
+ create mode 100644 src/db/DbIntegretyException.java
+ create mode 100644 src/module-info.java
+
+wagner@wg MINGW64 /c/tamp2/seçao_21_jdbc7_dao_git (main)
+$ git push -u origin main
+Enumerating objects: 15, done.
+Counting objects: 100% (15/15), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (14/14), done.
+Writing objects: 100% (14/14), 2.47 KiB | 1.23 MiB/s, done.
+Total 14 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), done.
+To github.com:wagnerfeitosa/secao21_jdbc7_dao.git
+   fab2ac5..c6b1588  main -> main
+branch 'main' set up to track 'origin/main'.
+
+wagner@wg MINGW64 /c/tamp2/seçao_21_jdbc7_dao_git (main)
+$
