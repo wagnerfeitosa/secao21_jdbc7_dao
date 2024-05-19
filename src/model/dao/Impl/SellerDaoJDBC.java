@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -40,7 +41,7 @@ public class SellerDaoJDBC implements SellerDao {
 		
 		
 	}
-
+    //metodo que retorna um seller por Id
 	@Override
 	public Seller findById(Integer id) {
 		PreparedStatement st = null;
@@ -91,10 +92,42 @@ public class SellerDaoJDBC implements SellerDao {
 
 	@Override
 	public List<Seller> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Statement st = null;
+		ResultSet rs = null;
+		List<Seller> lista = new ArrayList<>();
+		Map<Integer,Department> map = new HashMap<>();
+		
+		try {
+			String sql = "SELECT seller.*,department.Name as DepName "
+					+ "FROM seller INNER JOIN department "
+					+ "ON seller.DepartmentId = department.Id "
+					+ "ORDER BY Name";
+			
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);
+			while(rs.next()) {
+				
+				//forma para não repetir de department
+				Department dep = map.get(rs.getInt("DepartmentId"));
+				
+				if(dep == null) {
+					dep = instantiateDepartament(rs);
+					map.put(rs.getInt("DepartmentId"), dep);
+				}
+				
+				Seller c = instantiateSelle(rs, dep);
+				lista.add(c);
+			}
+			
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return lista;
 	}
-
+    //metodo que retorna uma lista de seller por Id department
 	@Override
 	public List<Seller> findDepartment(Department department) {
 		
@@ -113,6 +146,7 @@ public class SellerDaoJDBC implements SellerDao {
 			rs = st.executeQuery();
 			
 			List<Seller> lista = new ArrayList<>();
+			//UTILIZAMOS MAP PARA NÃO REPETIRMOS A INSTANCIAÇÃO DE DEPARTMENT
 			Map<Integer, Department> map = new HashMap<>(); 
 			
 			while(rs.next()) {
