@@ -47,6 +47,17 @@ public class Program {
 		//IMPRIMINDO O ID INSERIDO NA BASE DE DADOS
 		System.out.println("Insert new id: "+newSeller.getId());
 		
+		System.out.println("-------------------------------------");
+		System.out.println("====TEST 5: seller Update");
+		//CAPTURANDO SELLER DE ID =1
+		seller = sellerDao.findById(1);
+		//SETANDO UM NOVO NOMEDO SELLER CAPTURADO
+		seller.setName("Martha Waine");
+		//ALTERANDO NA BASE DE DADOS
+		sellerDao.update(seller);
+		
+		System.out.println("Update completed");
+		
 	
 
 	}
