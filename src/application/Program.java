@@ -1,5 +1,6 @@
 package application;
 
+import java.util.Date;
 import java.util.List;
 
 import model.dao.DaoFactory;
@@ -35,6 +36,16 @@ public class Program {
 		for(Seller obj: listaSeller) {
 			System.out.println(obj);
 		}
+		
+		System.out.println("--------------------------------------");
+		
+		System.out.println("====TEST 4: seller insert");
+		//CRIANDO OBJETO SELLER
+		Seller newSeller = new Seller(null,"Greg","greg@Gmail.com",new Date(),4000.0,department);
+		//INSERINDO OBJETO SELLER CRIADO NA BASE DE DADOS
+		sellerDao.insert(newSeller);
+		//IMPRIMINDO O ID INSERIDO NA BASE DE DADOS
+		System.out.println("Insert new id: "+newSeller.getId());
 		
 	
 
